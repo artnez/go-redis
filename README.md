@@ -2,7 +2,7 @@
 
 Go Redis client with an opinionated and programmatic API.
 
-IO is handled by [garyburd/redigo][redigo].
+I/O is handled by [garyburd/redigo][redigo].
 
 Not ready for prime time.
 
