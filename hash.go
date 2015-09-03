@@ -34,7 +34,7 @@ func (h *HashType) Get(key string) *HashValue {
 	}
 }
 
-func (h *HashType) Set(key, value string) {
+func (h *HashType) Set(key, value interface{}) {
 	h.client.do("HSET", h.Key, key, value)
 }
 
