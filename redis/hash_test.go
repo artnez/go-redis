@@ -8,7 +8,7 @@ import (
 )
 
 func getHash() *HashType {
-	return client.Hash("test", "hash")
+	return testClient().Hash("test", "hash")
 }
 
 func TestHashGetSetDel(t *testing.T) {
