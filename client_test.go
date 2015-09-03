@@ -7,11 +7,10 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	client := NewClient("localhost:6379", &Options{
+	Init("redis://localhost:6379", &Options{
 		KeyPrefix:    "yarctest",
 		KeyDelimiter: ":",
 	})
-	GlobalInit(client)
 
 	flag.Parse()
 	os.Exit(m.Run())

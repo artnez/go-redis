@@ -2,8 +2,8 @@ package yarc
 
 var client *Client
 
-func GlobalInit(globalClient *Client) {
-	client = globalClient
+func Init(address string, options *Options) {
+	client = NewClient(address, options)
 }
 
 func Hash(key string) *HashType {

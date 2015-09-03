@@ -27,7 +27,7 @@ type Client struct {
 func NewClient(address string, options *Options) *Client {
 	pool := &redis.Pool{
 		Dial: func() (redis.Conn, error) {
-			return redis.Dial("tcp", address)
+			return redis.DialURL(address)
 		},
 	}
 	return NewClientWithPool(pool, options)
