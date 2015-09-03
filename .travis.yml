@@ -6,5 +6,7 @@ go:
 install:
   - go get github.com/garyburd/redigo/redis
   - go get github.com/stretchr/testify/assert
+script:
+  - make test
 services:
   - redis-server
