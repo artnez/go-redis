@@ -1,4 +1,4 @@
-package yarc
+package redis
 
 import (
 	"log"
@@ -10,7 +10,7 @@ import (
 type Logger func(cmd string, args ...interface{})
 
 func DefaultLogger(cmd string, args ...interface{}) {
-	log.Printf("[yarc] %s %s", cmd, args)
+	log.Printf("[redis] %s %s", cmd, args)
 }
 
 type Options struct {

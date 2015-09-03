@@ -1,4 +1,4 @@
-package yarc
+package redis
 
 import (
 	"flag"
@@ -8,7 +8,7 @@ import (
 
 func TestMain(m *testing.M) {
 	Init("redis://localhost:6379", &Options{
-		KeyPrefix:    "yarctest",
+		KeyPrefix:    "redistest",
 		KeyDelimiter: ":",
 	})
 

@@ -1,4 +1,4 @@
-package yarc
+package redis
 
 var client *Client
 

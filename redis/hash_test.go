@@ -1,4 +1,4 @@
-package yarc
+package redis
 
 import (
 	"sort"
