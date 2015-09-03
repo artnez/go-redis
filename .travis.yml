@@ -5,4 +5,4 @@ install:
   - go get github.com/garyburd/redigo/redis
   - go get github.com/stretchr/testify/assert
 services:
-  - redis
+  - redis-server
