@@ -5,6 +5,8 @@ yarc
 
 Yet another Redis client. With an opinionated and programmatic API.
 
-IO is handled by garyburd/redigo.
+IO is handled by [garyburd/redigo][redigo].
 
 Not ready for prime time.
+
+[redigo]: https://github.com/garyburd/redigo
