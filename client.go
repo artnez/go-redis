@@ -44,12 +44,12 @@ func (c *Client) Key(parts ...string) string {
 	return strings.Join(parts, c.options.KeyDelimiter)
 }
 
-func (c *Client) Hash(key string) *Hash {
-	return &Hash{Key: key, client: c}
+func (c *Client) Hash(key string) *HashType {
+	return &HashType{Key: key, client: c}
 }
 
-func (c *Client) SortedSet(key string) *SortedSet {
-	return &SortedSet{Key: key, client: c}
+func (c *Client) SortedSet(key string) *SortedSetType {
+	return &SortedSetType{Key: key, client: c}
 }
 
 func (c *Client) do(cmd string, args ...interface{}) (interface{}, error) {

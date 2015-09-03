@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func getHash() *Hash {
+func getHash() *HashType {
 	return client.Hash(client.Key("test", "hash"))
 }
 

@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func getSortedSet() *SortedSet {
+func getSortedSet() *SortedSetType {
 	return client.SortedSet(client.Key("test", "sortedset"))
 }
 
