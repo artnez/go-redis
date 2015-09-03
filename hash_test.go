@@ -14,9 +14,9 @@ func getHash() *HashType {
 func TestHashGetSetDel(t *testing.T) {
 	h := getHash()
 	h.Set("foo", "bar")
-	assert.Equal(t, "bar", h.Get("foo"))
+	assert.Equal(t, "bar", h.Get("foo").String())
 	h.Del("foo")
-	assert.Equal(t, "", h.Get("foo"))
+	assert.Equal(t, "", h.Get("foo").String())
 }
 
 func TestHashKeysAndValues(t *testing.T) {

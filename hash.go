@@ -25,10 +25,13 @@ func (h *HashType) Vals() []string {
 	return keys
 }
 
-func (h *HashType) Get(key string) string {
+func (h *HashType) Get(key string) *HashValue {
 	reply, err := h.client.do("HGET", h.Key, key)
-	result, _ := redis.String(reply, err)
-	return result
+	result, err := redis.Bytes(reply, err)
+	return &HashValue{
+		Bytes: result,
+		Found: err == nil,
+	}
 }
 
 func (h *HashType) Set(key, value string) {
@@ -49,4 +52,13 @@ func (h *HashType) Update(values map[string]string) {
 		args = append(args, key, value)
 	}
 	h.client.do("HMSET", args...)
+}
+
+type HashValue struct {
+	Bytes []byte
+	Found bool
+}
+
+func (h *HashValue) String() string {
+	return string(h.Bytes)
 }

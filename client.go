@@ -71,17 +71,3 @@ func (c *Client) key(key string, args ...interface{}) string {
 	}
 	return strings.Join(parts, c.options.KeyDelimiter)
 }
-
-/*
-func encode(value interface{}) []byte {
-	b, err := json.Marshal(value)
-	if err != nil {
-		panic(err)
-	}
-	return b
-}
-
-func decode(value []byte, dest interface{}) {
-	json.Unmarshal(value, dest)
-}
-*/
