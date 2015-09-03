@@ -7,7 +7,7 @@ import (
 )
 
 func getSortedSet() *SortedSetType {
-	return client.SortedSet(client.Key("test", "sortedset"))
+	return client.SortedSet("test", "sortedset")
 }
 
 func TestSortedSetSet(t *testing.T) {

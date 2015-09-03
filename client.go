@@ -37,19 +37,18 @@ func NewClientWithPool(pool *redis.Pool, options *Options) *Client {
 	return &Client{pool, options}
 }
 
-func (c *Client) Key(parts ...string) string {
-	if c.options.KeyPrefix != "" {
-		parts = append([]string{c.options.KeyPrefix}, parts...)
+func (c *Client) Hash(key string, args ...interface{}) *HashType {
+	return &HashType{
+		Key:    c.key(key, args...),
+		client: c,
 	}
-	return strings.Join(parts, c.options.KeyDelimiter)
 }
 
-func (c *Client) Hash(key string) *HashType {
-	return &HashType{Key: key, client: c}
-}
-
-func (c *Client) SortedSet(key string) *SortedSetType {
-	return &SortedSetType{Key: key, client: c}
+func (c *Client) SortedSet(key string, args ...interface{}) *SortedSetType {
+	return &SortedSetType{
+		Key:    c.key(key, args...),
+		client: c,
+	}
 }
 
 func (c *Client) do(cmd string, args ...interface{}) (interface{}, error) {
@@ -58,6 +57,19 @@ func (c *Client) do(cmd string, args ...interface{}) (interface{}, error) {
 		c.options.Logger(cmd, args...)
 	}
 	return conn.Do(cmd, args...)
+}
+
+func (c *Client) key(key string, args ...interface{}) string {
+	parts := []string{key}
+	if c.options.KeyPrefix != "" {
+		parts = append([]string{c.options.KeyPrefix}, parts...)
+	}
+	for _, arg := range args {
+		if part, ok := arg.(string); ok {
+			parts = append(parts, part)
+		}
+	}
+	return strings.Join(parts, c.options.KeyDelimiter)
 }
 
 /*
