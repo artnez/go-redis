@@ -24,7 +24,7 @@ type Client struct {
 	options *Options
 }
 
-func NewClient(address string, options *Options) *Client {
+func NewClient(address string, options Options) *Client {
 	pool := &redis.Pool{
 		Dial: func() (redis.Conn, error) {
 			return redis.DialURL(address)
@@ -33,8 +33,8 @@ func NewClient(address string, options *Options) *Client {
 	return NewClientWithPool(pool, options)
 }
 
-func NewClientWithPool(pool *redis.Pool, options *Options) *Client {
-	return &Client{pool, options}
+func NewClientWithPool(pool *redis.Pool, options Options) *Client {
+	return &Client{pool, &options}
 }
 
 func (c *Client) Hash(key string, args ...interface{}) *HashType {
