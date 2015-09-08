@@ -2,7 +2,7 @@ package redis
 
 var client *Client
 
-func Init(address string, options Options) {
+func GlobalInit(address string, options Options) {
 	client = NewClient(address, options)
 }
 
